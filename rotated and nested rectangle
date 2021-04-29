@@ -1,0 +1,19 @@
+% MATLAB-code
+%  To plot the graph of nested,scaled and rotated rectangle
+clear;clc;clf;
+syms p
+R(p)     =   [cos(p),-sin(p);sin(p),cos(p)];  %rotation matrix
+N=100;
+% a=ones(1,N);
+% b=3/4*ones(1,N);
+a=linspace(1,8,N);
+b=linspace(1,6,N);
+
+theta    =   linspace(0,5*pi,N);              % angle of rotaion
+hold on
+for i=1:N
+    X  =  [a(i),-a(i),-a(i),a(i),a(i);b(i),b(i),-b(i),-b(i),b(i)]; % point of rectangle
+    Y  =  R(theta(i))*X;   
+    plot(Y(1,:),Y(2,:),'r')
+end
+axis off
